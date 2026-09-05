@@ -1,0 +1,6 @@
+.day-picker { box-sizing: border-box; padding: 105px 40px 0; }
+.day-picker__content { display: flex; align-items: center; gap: 14px; max-width: 980px; margin: 0 auto; padding: 16px 20px; border: 1px solid rgba(255,255,255,.08); border-radius: 14px; background: #1d1d24; color: #c8c8d0; }
+.day-picker label { color: #f7f7fa; font-weight: 600; }
+.day-picker input { padding: 9px 11px; border: 1px solid #393943; border-radius: 8px; background: #292932; color: #fff; font: inherit; color-scheme: dark; }
+.day-picker span { margin-left: auto; color: #a6a6b1; font-size: .9rem; }
+@media (max-width: 720px) { .day-picker { padding: 78px 20px 0; } .day-picker__content { align-items: flex-start; flex-wrap: wrap; } .day-picker span { width: 100%; margin-left: 0; } }

@@ -1,0 +1,78 @@
+.macro-target {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 105px 40px 48px;
+}
+
+.macro-target__card {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  background: #1d1d24;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.22);
+}
+
+.macro-target h1 {
+  margin-bottom: 28px;
+  color: #f7f7fa;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+.target-fields {
+  display: grid;
+  gap: 20px;
+}
+
+.target-fields label {
+  display: grid;
+  gap: 9px;
+  color: #f2f2f5;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.target-fields input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 15px;
+  border: 1px solid #393943;
+  border-radius: 10px;
+  outline: none;
+  background: #292932;
+  color: #fff;
+  font: inherit;
+}
+
+.target-fields input:focus {
+  border-color: #b923e1;
+  box-shadow: 0 0 0 3px rgba(185, 35, 225, 0.16);
+}
+
+.total-calories {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 30px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: #c8c8d0;
+  font-size: 1.1rem;
+}
+
+.total-calories strong {
+  color: #fff;
+  font-size: 1.55rem;
+}
+
+@media (max-width: 720px) {
+  .macro-target {
+    padding: 90px 20px 28px;
+  }
+
+  .macro-target__card {
+    padding: 25px;
+  }
+}

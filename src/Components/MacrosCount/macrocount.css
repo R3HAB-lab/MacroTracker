@@ -1,0 +1,80 @@
+.macro-count {
+  box-sizing: border-box;
+  padding: 36px 40px 48px;
+}
+
+.macro-count__title {
+  max-width: 980px;
+  margin: 0 auto 22px;
+  color: #f7f7fa;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+}
+
+.macro-card {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 34px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  background: #1d1d24;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.22);
+}
+
+.macro-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.macro-heading h2 {
+  color: #f7f7fa;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.macro-heading span {
+  color: #a6a6b1;
+  font-size: 0.85rem;
+}
+
+.progress-track {
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #2a2a33;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: inherit;
+}
+
+.progress-fill--purple {
+  background: linear-gradient(90deg, #7438ff, #d723ef);
+}
+
+.progress-fill--pink {
+  background: linear-gradient(90deg, #ff62d5, #e14ee8);
+}
+
+.progress-fill--orange {
+  background: linear-gradient(90deg, #ff8c4c, #ff3f55);
+}
+
+@media (max-width: 720px) {
+  .macro-count {
+    padding: 28px 20px;
+  }
+
+  .macro-card {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    padding: 24px;
+  }
+}
