@@ -1,38 +1,331 @@
-.add-meal { box-sizing: border-box; padding: 56px 40px 64px; }
-.add-meal__card { max-width: 760px; margin: 0 auto; padding: 34px; border: 1px solid rgba(255,255,255,.08); border-radius: 22px; background: #1d1d24; box-shadow: 0 12px 35px rgba(0,0,0,.22); }
-.add-meal h1, .add-meal h2 { color: #f7f7fa; }
-.add-meal h1 { margin-bottom: 8px; font-size: clamp(1.8rem, 4vw, 2.5rem); }
-.add-meal h2 { font-size: 1.2rem; }
-.add-meal__hint { margin-bottom: 24px; color: #a6a6b1; }
-.add-meal form { display: grid; gap: 20px; }
-.meal-builder { padding: 24px; border: 1px solid rgba(255,255,255,.09); border-radius: 16px; background: #23232b; }
-.meal-builder__heading { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 20px; }
-.meal-builder__heading span { color: #a6a6b1; font-size: .9rem; }
-.meal-builder__controls { display: flex; align-items: center; gap: 14px; }
-.meal-builder__controls button { padding: 4px 0; border: 0; background: transparent; color: #da7cfa; }
-.delete-button { border: 0; background: transparent; color: #ff8995; }
-.delete-item-button { padding: 13px 0; }
-.meal-builder__items { display: grid; gap: 16px; }
-.meal-item-row { display: grid; grid-template-columns: 1fr 150px auto; align-items: end; gap: 16px; }
-.add-meal label { display: grid; gap: 9px; color: #f2f2f5; font-weight: 500; }
-.add-meal input { width: 100%; box-sizing: border-box; padding: 13px 15px; border: 1px solid #393943; border-radius: 10px; outline: none; background: #292932; color: #fff; font: inherit; }
-.add-meal input:focus { border-color: #b923e1; box-shadow: 0 0 0 3px rgba(185,35,225,.16); }
-.add-meal button { font: inherit; font-weight: 600; cursor: pointer; }
-.add-meal__secondary-button { justify-self: start; margin-top: 18px; padding: 10px 0; border: 0; background: transparent; color: #da7cfa; }
-.add-meal__secondary-button:disabled { color: #70707a; cursor: not-allowed; }
-.add-meal__new-card { margin-top: 0; }
-.add-meal__save-button { justify-self: start; padding: 13px 22px; border: 0; border-radius: 10px; background: linear-gradient(90deg,#7438ff,#d723ef); color: #fff; }
-.add-meal__message { margin-top: 18px; color: #b8ebce; }
-.saved-meals { margin-top: 28px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.08); color: #c8c8d0; }
-.saved-meals h2 { margin-bottom: 12px; }
-.saved-meals p + p { margin-top: 8px; }
-.saved-meal-card { margin-top: 14px; padding: 18px; border: 1px solid rgba(255,255,255,.09); border-radius: 14px; background: #23232b; }
-.saved-meal-card__heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.saved-meal-card h3 { color: #f7f7fa; font-size: 1.05rem; }
-.saved-meal-card button { border: 0; background: transparent; color: #da7cfa; font: inherit; font-weight: 600; cursor: pointer; }
-.saved-meal-card .saved-meal-delete { color: #ff8995; }
-.saved-item, .saved-item-edit { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 14px; color: #c8c8d0; }
-.saved-item-edit { display: grid; grid-template-columns: 1fr 110px auto auto; }
-.saved-item-edit input { padding: 9px 11px; }
-.saved-item-edit button { padding: 8px 0; }
-@media (max-width: 720px) { .add-meal { padding: 36px 20px 48px; } .add-meal__card { padding: 25px; } .meal-builder__heading { align-items: flex-start; } .meal-builder__controls { flex-wrap: wrap; justify-content: flex-end; } .meal-item-row, .saved-item-edit { grid-template-columns: 1fr; gap: 12px; } .delete-item-button { justify-self: start; padding: 0; } }
+/* ==========================================
+   AddMeal Dark Theme Base Styles
+   ========================================== */
+.add-meal {
+  box-sizing: border-box;
+  padding: 56px 40px 64px;
+  background-color: #131317;
+  color: #f7f7fa;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.add-meal__card {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  background: #1d1d24;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.22);
+}
+
+.add-meal h1,
+.add-meal h2 {
+  color: #f7f7fa;
+  margin: 0;
+}
+
+.add-meal h1 {
+  margin-bottom: 8px;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+}
+
+.add-meal h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.add-meal__hint {
+  margin-top: 0;
+  margin-bottom: 24px;
+  color: #a6a6b1;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.add-meal form {
+  display: grid;
+  gap: 20px;
+}
+
+/* ==========================================
+   Meal Builder
+   ========================================== */
+.meal-builder {
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 16px;
+  background: #23232b;
+  transition: border-color 0.2s ease;
+}
+
+.meal-builder:focus-within {
+  border-color: rgba(218, 124, 250, 0.3);
+}
+
+.meal-builder__heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.meal-builder__heading span {
+  color: #a6a6b1;
+  font-size: 0.9rem;
+}
+
+.meal-builder__controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.meal-builder__controls button {
+  padding: 4px 0;
+  border: 0;
+  background: transparent;
+  color: #da7cfa;
+  transition: opacity 0.15s ease;
+}
+
+.meal-builder__controls button:hover {
+  opacity: 0.8;
+}
+
+/* ==========================================
+   Form Controls (Inputs & Selects)
+   ========================================== */
+.meal-builder__items {
+  display: grid;
+  gap: 16px;
+}
+
+.meal-item-row {
+  display: grid;
+  grid-template-columns: 1fr 150px auto;
+  align-items: end;
+  gap: 16px;
+}
+
+.add-meal label {
+  display: grid;
+  gap: 9px;
+  color: #f2f2f5;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.add-meal input,
+.add-meal select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 15px;
+  border: 1px solid #393943;
+  border-radius: 10px;
+  outline: none;
+  background: #292932;
+  color: #fff;
+  font: inherit;
+  font-size: 0.95rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.add-meal select option {
+  background-color: #292932;
+  color: #fff;
+}
+
+.add-meal input:focus,
+.add-meal select:focus {
+  border-color: #b923e1;
+  box-shadow: 0 0 0 3px rgba(185, 35, 225, 0.16);
+}
+
+/* ==========================================
+   Buttons
+   ========================================== */
+.add-meal button {
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.delete-button {
+  border: 0;
+  background: transparent;
+  color: #ff8995;
+  transition: opacity 0.15s ease;
+}
+
+.delete-button:hover {
+  opacity: 0.8;
+}
+
+.delete-item-button {
+  padding: 13px 0;
+}
+
+.add-meal__secondary-button {
+  justify-self: start;
+  margin-top: 18px;
+  padding: 10px 0;
+  border: 0;
+  background: transparent;
+  color: #da7cfa;
+  transition: opacity 0.15s ease;
+}
+
+.add-meal__secondary-button:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+.add-meal__secondary-button:disabled {
+  color: #70707a;
+  cursor: not-allowed;
+}
+
+.add-meal__new-card {
+  margin-top: 0;
+}
+
+.add-meal__save-button {
+  justify-self: start;
+  padding: 13px 22px;
+  border: 0;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #7438ff, #d723ef);
+  color: #fff;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.add-meal__save-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(215, 35, 239, 0.3);
+}
+
+.add-meal__save-button:active {
+  transform: translateY(0);
+}
+
+/* ==========================================
+   Messages & Saved Meals
+   ========================================== */
+.add-meal__message {
+  margin-top: 18px;
+  color: #b8ebce;
+  font-size: 0.925rem;
+}
+
+.saved-meals {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: #c8c8d0;
+}
+
+.saved-meals h2 {
+  margin-bottom: 12px;
+}
+
+.saved-meals p + p {
+  margin-top: 8px;
+}
+
+.saved-meal-card {
+  margin-top: 14px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 14px;
+  background: #23232b;
+}
+
+.saved-meal-card__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.saved-meal-card h3 {
+  color: #f7f7fa;
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.saved-meal-card button {
+  border: 0;
+  background: transparent;
+  color: #da7cfa;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.saved-meal-card button:hover {
+  opacity: 0.8;
+}
+
+.saved-meal-card .saved-meal-delete {
+  color: #ff8995;
+}
+
+.saved-item,
+.saved-item-edit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 14px;
+  color: #c8c8d0;
+}
+
+.saved-item-edit {
+  display: grid;
+  grid-template-columns: 1fr 110px auto auto;
+}
+
+.saved-item-edit input,
+.saved-item-edit select {
+  padding: 9px 11px;
+}
+
+.saved-item-edit button {
+  padding: 8px 0;
+}
+
+/* ==========================================
+   Responsive Adaptations
+   ========================================== */
+@media (max-width: 720px) {
+  .add-meal {
+    padding: 36px 20px 48px;
+  }
+
+  .add-meal__card {
+    padding: 25px;
+  }
+
+  .meal-builder__heading {
+    align-items: flex-start;
+  }
+
+  .meal-builder__controls {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .meal-item-row,
+  .saved-item-edit {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .delete-item-button {
+    justify-self: start;
+    padding: 0;
+  }
+}

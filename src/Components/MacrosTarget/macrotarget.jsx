@@ -15,7 +15,7 @@ const MacroTarget = ({ targets, setTargets }) => {
   return (
     <section className="macro-target" id="your-target" aria-labelledby="target-title">
       <div className="macro-target__card">
-        <h1 id="target-title">Your Macros Target</h1>
+        <h1 id="target-title">Enter Your Macros Target</h1>
 
         <div className="target-fields">
           <label>

@@ -6,7 +6,7 @@ const Progress = ({ targets, meals }) => {
     + (Number(targets.fats) || 0) * 9
 
   const caloriesConsumed = meals.reduce(
-    (total, meal) => total + (meal.macros.protein * 4) + (meal.macros.carbs * 4) + (meal.macros.fats * 9),
+    (total, meal) => total + (meal.calories ?? ((meal.macros.protein * 4) + (meal.macros.carbs * 4) + (meal.macros.fats * 9))),
     0,
   )
 
