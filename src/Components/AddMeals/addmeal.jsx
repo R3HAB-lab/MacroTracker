@@ -6,8 +6,6 @@ const foods = {
   egg: { protein: 6, carbs: 0, fats: 4.5, calories: 78, unit: 'count' },
   'egg white': { protein: 3.5, carbs: 0, fats: 0, calories: 18, unit: 'count' },
   chapathi: { protein: 4, carbs: 25, fats: 0, calories: 119, unit: 'count' },
-  chapthi: { protein: 4, carbs: 25, fats: 0, calories: 119, unit: 'count' },
-  chapati: { protein: 4, carbs: 25, fats: 0, calories: 119, unit: 'count' },
   rice: { protein: 2.7, carbs: 28, fats: 0.3 },
   salmon: { protein: 20.4, carbs: 0, fats: 13.4 },
 
