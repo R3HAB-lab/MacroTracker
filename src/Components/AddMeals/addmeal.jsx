@@ -3,20 +3,20 @@ import './addmeal.css'
 
 const foods = {
   'chicken breast': { protein: 31, carbs: 0, fats: 3.6 },
-  egg: { protein: 6, carbs: 0, fats: 4.5, calories: 78, unit: 'count' },
+  'whole egg': { protein: 6, carbs: 0, fats: 4.5, calories: 78, unit: 'count' },
   'egg white': { protein: 3.5, carbs: 0, fats: 0, calories: 18, unit: 'count' },
-  chapathi: { protein: 4, carbs: 25, fats: 0, calories: 119, unit: 'count' },
+  chapati: { protein: 4, carbs: 25, fats: 0, calories: 119, unit: 'count' },
   rice: { protein: 2.7, carbs: 28, fats: 0.3 },
-  salmon: { protein: 20.4, carbs: 0, fats: 13.4 },
+  'Fish Fillet': { protein: 20.4, carbs: 0, fats: 13.4 },
 
   // Dairy (per 100ml / 100g)
-  milk: { protein: 3.5, carbs: 5, fats: 4, calories: 71 },
+  'nandini milk': { protein: 3.5, carbs: 5, fats: 4, calories: 71 },
   curd: { protein: 3.7, carbs: 4.4, fats: 3, calories: 60 },
 
   // Paneer (per 100g)
   'milky mist high protein paneer': { protein: 25, carbs: 5.7, fats: 9, calories: 203 },
   'milky mist paneer': { protein: 16.1, carbs: 5.1, fats: 22, calories: 283 },
-  'nandhini paneer': { protein: 21.4, carbs: 1.5, fats: 28, calories: 344 },
+  'nandini paneer': { protein: 21.4, carbs: 1.5, fats: 28, calories: 344 },
 
   // Butter (stored per 100g)
   butter: { protein: 0, carbs: 0, fats: 83, calories: 750 },
