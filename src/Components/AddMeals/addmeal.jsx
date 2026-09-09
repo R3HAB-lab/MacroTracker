@@ -47,6 +47,8 @@ const formatFoodLabel = (str) => str.replace(/\b\w/g, (char) => char.toUpperCase
 
 const newItem = () => ({ id: crypto.randomUUID(), name: '', grams: '' })
 const newMeal = () => ({ id: crypto.randomUUID(), items: [newItem()], collapsed: false })
+const getNextMealNumber = (meals) =>
+  meals.reduce((highestNumber, meal) => Math.max(highestNumber, Number(meal.number) || 0), 0) + 1
 
 const AddMeal = ({ meals, setMeals }) => {
   const [mealCards, setMealCards] = useState([newMeal()])
@@ -103,9 +105,14 @@ const AddMeal = ({ meals, setMeals }) => {
 
   const saveMeals = (event) => {
     event.preventDefault()
+    const firstMealNumber = getNextMealNumber(meals)
     const entries = mealCards
       .flatMap((meal, mealIndex) =>
-        meal.items.map((item) => ({ ...item, mealNumber: mealIndex + 1, mealKey: meal.id }))
+        meal.items.map((item) => ({
+          ...item,
+          mealNumber: firstMealNumber + mealIndex,
+          mealKey: meal.id,
+        }))
       )
       .filter((item) => item.name.trim() || item.grams)
 
@@ -198,7 +205,7 @@ const AddMeal = ({ meals, setMeals }) => {
           {mealCards.map((meal, mealIndex) => (
             <article className="meal-builder" key={meal.id}>
               <div className="meal-builder__heading">
-                <h2>Meal {mealIndex + 1}</h2>
+                <h2>Meal {getNextMealNumber(meals) + mealIndex}</h2>
                 <div className="meal-builder__controls">
                   <span>{meal.items.length} / 4 items</span>
                   <button
