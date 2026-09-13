@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">MacroTracker</string>
+    <string name="title_activity_main">MacroTracker</string>
+    <string name="package_name">com.macrotracker.app</string>
+    <string name="custom_url_scheme">com.macrotracker.app</string>
+</resources>

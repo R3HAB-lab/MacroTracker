@@ -1,55 +1,74 @@
-/* ===== Navbar ===== */
+/* ===== Navbar =====
+   Desktop: fixed bar across the top.
+   Phones (<= 720px): fixed bottom tab bar, which is what a native app user expects
+   and keeps the targets inside thumb reach. */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* Offset for fixed navbar */
+  scroll-padding-top: calc(var(--top-bar-height) + var(--safe-top) + 18px);
 }
 
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  padding: 10px 40px;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  padding: 10px calc(40px + var(--safe-right)) 10px calc(40px + var(--safe-left));
+  padding-top: calc(10px + var(--safe-top));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(15, 15, 25, 0.75);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  z-index: 1000;
-  box-sizing: border-box;
-  transition: all 0.3s ease;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
-/* Logo */
-.nav-logo {
-  width: 140px;
-  cursor: pointer;
+.nav-brand {
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
 }
 
-/* ===== Desktop Navigation Menu ===== */
 .nav-menu {
   display: flex;
   align-items: center;
   gap: 40px;
-  list-style: none;
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
 .nav-menu li {
   position: relative;
-  cursor: pointer;
+  padding: 8px 12px;
+  color: #fff;
   font-size: 18px;
   font-weight: 500;
-  color: #ffffff;
-  transition: all 0.3s ease;
+  border-radius: 12px;
+  transition: color 0.25s ease, transform 0.25s ease, background-color 0.25s ease;
+}
+
+.nav-menu a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* The icons are only used by the mobile tab bar. */
+.nav-icon {
+  display: none;
 }
 
 /* Underline Animation */
 .nav-menu li::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 50%;
   bottom: -8px;
@@ -57,15 +76,23 @@ html {
   height: 3px;
   border-radius: 50px;
   background: linear-gradient(267deg, #da7c25 0.36%, #b923e1 102.06%);
-  transition: all 0.35s ease;
   transform: translateX(-50%);
+  transition: width 0.35s ease;
 }
 
-/* Hover & Active Effects */
 .nav-menu li:hover,
 .nav-menu li.active {
   color: #da7c25;
+}
+
+.nav-menu li.active {
+  background: linear-gradient(180deg, rgba(218, 124, 37, 0.08), rgba(185, 35, 225, 0.08));
+  box-shadow: inset 0 0 0 1px rgba(218, 124, 37, 0.18), 0 8px 20px rgba(157, 74, 253, 0.12);
+}
+
+.nav-menu li:hover {
   transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .nav-menu li:hover::after,
@@ -73,70 +100,89 @@ html {
   width: 100%;
 }
 
-/* Toggle Icons (Hidden on Desktop) */
-.nav-mob-open,
-.nav-mob-close {
-  display: none;
-  cursor: pointer;
-  object-fit: contain;
-}
-
-/* ===== Resume Button ===== */
-.nav-connect {
-  text-decoration: none;
-  color: #fff;
-  display: inline-block;
-  padding: 15px 30px;
-  border-radius: 50px;
-  background: linear-gradient(267deg, #da7c25 0.36%, #b923e1 102.06%);
-  font-size: 18px;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.nav-connect:hover {
-  text-decoration: none;
-  transform: scale(1.05);
-  box-shadow: 0 4px 15px rgba(185, 35, 225, 0.4);
-}
-
-/* ===== Mobile Responsiveness ===== */
-@media (max-width: 768px) {
-  .navbar {
-    padding: 14px 20px;
-    overflow-x: auto;
+/* ===== Mobile tab bar ===== */
+@media (max-width: 720px) {
+  html {
+    /* No top bar on phones, so anchors only need to clear the status bar. */
+    scroll-padding-top: calc(var(--safe-top) + 12px);
   }
 
-  .nav-connect {
+  .navbar {
+    top: auto;
+    bottom: 0;
+    gap: 0;
+    height: calc(var(--tab-bar-height) + var(--safe-bottom));
+    padding: 0 var(--safe-right) var(--safe-bottom) var(--safe-left);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 0;
+    background: rgba(15, 15, 25, 0.92);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .nav-brand {
     display: none;
   }
 
-  .nav-mob-open {
-    display: block;
-    width: 30px;
-    height: 30px;
-  }
-
-  .nav-mob-close {
-    display: block;
-    align-self: flex-end;
-    width: 28px;
-    height: 28px;
-    margin-bottom: 20px;
-  }
-
   .nav-menu {
-    width: max-content;
-    gap: 20px;
+    gap: 0;
+    width: 100%;
+    height: 100%;
   }
 
   .nav-menu li {
-    flex: 0 0 auto;
-    font-size: 15px;
+    flex: 1;
+    height: 100%;
+    padding: 0;
+    color: #8b8b98;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 14px;
+    transition: color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
   }
-}
 
-.nav-menu a {
-  color: inherit;
-  text-decoration: none;
+  .nav-menu li:hover {
+    transform: none;
+    background: rgba(255, 255, 255, 0.025);
+  }
+
+  /* The underline would sit off-screen under a bottom bar. */
+  .nav-menu li::after,
+  .nav-menu li:hover::after,
+  .nav-menu li.active::after {
+    display: none;
+  }
+
+  .nav-menu li.active {
+    background: linear-gradient(180deg, rgba(160, 97, 255, 0.22), rgba(255, 255, 255, 0.02));
+    box-shadow: inset 0 0 0 1px rgba(217, 140, 255, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  }
+
+  .nav-menu a {
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+    width: 100%;
+    height: 100%;
+    min-height: var(--touch-target);
+  }
+
+  .nav-menu li:hover,
+  .nav-menu li.active {
+    color: #d98cff;
+  }
+
+  .nav-menu li:active {
+    opacity: 0.6;
+  }
+
+  .nav-icon {
+    display: block;
+    width: 23px;
+    height: 23px;
+  }
+
+  .nav-label {
+    line-height: 1.1;
+  }
 }

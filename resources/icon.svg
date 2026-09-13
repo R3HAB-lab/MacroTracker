@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#23232c" />
+      <stop offset="1" stop-color="#121216" />
+    </linearGradient>
+    <linearGradient id="protein" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7438ff" />
+      <stop offset="1" stop-color="#d723ef" />
+    </linearGradient>
+    <linearGradient id="carbs" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff62d5" />
+      <stop offset="1" stop-color="#e14ee8" />
+    </linearGradient>
+    <linearGradient id="fats" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff8c4c" />
+      <stop offset="1" stop-color="#ff3f55" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1024" height="1024" fill="url(#bg)" />
+
+  <g>
+    <rect x="180" y="300" width="664" height="120" rx="60" fill="#33333d" />
+    <rect x="180" y="452" width="664" height="120" rx="60" fill="#33333d" />
+    <rect x="180" y="604" width="664" height="120" rx="60" fill="#33333d" />
+
+    <rect x="180" y="300" width="664" height="120" rx="60" fill="url(#protein)" />
+    <rect x="180" y="452" width="470" height="120" rx="60" fill="url(#carbs)" />
+    <rect x="180" y="604" width="300" height="120" rx="60" fill="url(#fats)" />
+  </g>
+</svg>

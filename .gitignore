@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Signing credentials -- never commit these.
+# (Build output is already covered by android/.gitignore and ios/.gitignore.)
+android/keystore.properties
+*.jks
+*.keystore
+*.p12
+*.mobileprovision

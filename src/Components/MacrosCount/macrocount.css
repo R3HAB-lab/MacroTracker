@@ -69,12 +69,27 @@
 
 @media (max-width: 720px) {
   .macro-count {
-    padding: 28px 20px;
+    padding: 26px 16px 32px;
+  }
+
+  .macro-count__title {
+    margin-bottom: 16px;
+    font-size: 1.6rem;
   }
 
   .macro-card {
     grid-template-columns: 1fr;
-    gap: 26px;
-    padding: 24px;
+    gap: 22px;
+    padding: 20px 18px;
+    border-radius: 18px;
+  }
+
+  .macro-heading h2 {
+    font-size: 1.1rem;
+  }
+
+  /* Slightly chunkier bars so they stay legible at arm's length. */
+  .progress-track {
+    height: 12px;
   }
 }

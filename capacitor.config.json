@@ -1,0 +1,29 @@
+{
+  "appId": "com.macrotracker.app",
+  "appName": "MacroTracker",
+  "webDir": "dist",
+  "backgroundColor": "#161513",
+  "android": {
+    "backgroundColor": "#161513"
+  },
+  "ios": {
+    "backgroundColor": "#161513",
+    "contentInset": "never"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1200,
+      "launchAutoHide": true,
+      "backgroundColor": "#161513",
+      "androidScaleType": "CENTER_CROP",
+      "showSpinner": false,
+      "splashFullScreen": true,
+      "splashImmersive": false
+    },
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#161513",
+      "overlaysWebView": true
+    }
+  }
+}

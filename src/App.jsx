@@ -7,8 +7,17 @@ import AddMeals from './Components/AddMeals/addmeal'
 import Progress from './Components/Progress/progress'
 
 const storageKey = 'macro-tracker-days'
-const emptyDay = () => ({ targets: { protein: '', carbs: '', fats: '' }, meals: [] })
+const emptyBody = () => ({ weight: '', unit: 'kg', goal: 'maintain' })
+const emptyDay = () => ({ targets: { protein: '', carbs: '', fats: '' }, meals: [], body: emptyBody() })
 const getToday = () => new Date().toLocaleDateString('en-CA')
+
+const findPreviousBody = (days, date) => {
+  const previousDate = Object.keys(days)
+    .filter((day) => day < date && days[day]?.body?.weight)
+    .sort()
+    .pop()
+  return previousDate ? days[previousDate].body : emptyBody()
+}
 
 const loadDays = () => {
   try {
@@ -22,6 +31,13 @@ const App = () => {
   const [selectedDate, setSelectedDate] = useState(getToday)
   const [days, setDays] = useState(loadDays)
   const currentDay = days[selectedDate] || emptyDay()
+  const previousBody = findPreviousBody(days, selectedDate)
+  const dayBody = currentDay.body || {}
+  const currentBody = {
+    weight: dayBody.weight || previousBody.weight,
+    unit: dayBody.unit || previousBody.unit,
+    goal: dayBody.goal || previousBody.goal,
+  }
 
   useEffect(() => {
     localStorage.setItem(storageKey, JSON.stringify(days))
@@ -35,12 +51,20 @@ const App = () => {
     })
   }
 
+  const setCurrentBody = (update) =>
+    updateCurrentDay('body', typeof update === 'function' ? update(currentBody) : update)
+
   return (
-    <div>
+    <div className="app-shell">
       <Navbar />
       <DayPicker selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
       <MacrosCount targets={currentDay.targets} meals={currentDay.meals} />
-      <MacrosTarget targets={currentDay.targets} setTargets={(update) => updateCurrentDay('targets', update)} />
+      <MacrosTarget
+        targets={currentDay.targets}
+        setTargets={(update) => updateCurrentDay('targets', update)}
+        body={currentBody}
+        setBody={setCurrentBody}
+      />
       <AddMeals meals={currentDay.meals} setMeals={(update) => updateCurrentDay('meals', update)} />
       <Progress targets={currentDay.targets} meals={currentDay.meals} />
     </div>
