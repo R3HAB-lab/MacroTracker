@@ -24,6 +24,7 @@ const foods = {
   // Oats & fruits (per 100g)
   oats: { protein: 12, carbs: 68, fats: 10, calories: 407 },
   banana: { protein: 1, carbs: 23, fats: 0, calories: 89 },
+  'kabuli chana': { protein: 8.9, carbs: 27.4, fats: 2.6, calories: 164 },
 }
 
 const foodOptions = Object.keys(foods)
@@ -44,6 +45,14 @@ const calculateCalories = (nutrition, multiplier) => {
 }
 
 const formatFoodLabel = (str) => str.replace(/\b\w/g, (char) => char.toUpperCase())
+const getMealMacroTotals = (items) => items.reduce(
+  (totals, meal) => ({
+    protein: totals.protein + meal.macros.protein,
+    fats: totals.fats + meal.macros.fats,
+    carbs: totals.carbs + meal.macros.carbs,
+  }),
+  { protein: 0, fats: 0, carbs: 0 },
+)
 
 const newItem = () => ({ id: crypto.randomUUID(), name: '', grams: '' })
 const newMeal = () => ({ id: crypto.randomUUID(), items: [newItem()], collapsed: false })
@@ -329,6 +338,12 @@ const AddMeal = ({ meals, setMeals }) => {
                     Delete meal
                   </button>
                 </div>
+                <p className="saved-meal-card__macros">
+                  {(() => {
+                    const totals = getMealMacroTotals(mealGroup.items)
+                    return `P - ${totals.protein.toFixed(1)}g | F - ${totals.fats.toFixed(1)}g | C - ${totals.carbs.toFixed(1)}g`
+                  })()}
+                </p>
                 {!collapsedSavedMeals[mealKey] &&
                   mealGroup.items.map((meal) =>
                     editingItem?.id === meal.id ? (

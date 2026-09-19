@@ -272,6 +272,14 @@
   margin: 0;
 }
 
+.saved-meal-card__macros {
+  margin: 10px 0 0;
+  color: #b8ebce;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
 .saved-meal-card button {
   border: 0;
   background: transparent;
