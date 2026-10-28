@@ -21,6 +21,9 @@ const foods = {
   // Butter (stored per 100g)
   butter: { protein: 0, carbs: 0, fats: 83, calories: 750 },
 
+  // Protein supplements (per 100g)
+  'optimum nutrition': { protein: 79, carbs: 10, fats: 3, calories: 383 },
+
   // Oats & fruits (per 100g)
   oats: { protein: 12, carbs: 68, fats: 10, calories: 407 },
   banana: { protein: 1, carbs: 23, fats: 0, calories: 89 },
